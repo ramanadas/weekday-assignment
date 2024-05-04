@@ -1,4 +1,4 @@
-const fetchJobs = async ({ offset, limit }) => {
+async function fetchJobs ( offset, limit ){
     const myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
   
