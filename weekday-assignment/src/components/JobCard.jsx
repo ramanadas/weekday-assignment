@@ -38,31 +38,40 @@ const JobCard = ({ job }) => {
 
   return (
     <Card style={{ borderRadius: 20, margin: 'auto', maxWidth: 600 }}>
-      <CardContent style={{ display: 'flex', alignItems: 'center' }}>
+      <CardContent style={{ display: 'flex', alignItems: 'center', marginBottom: 0 }}>
         <img src={logoUrl} alt="logo" style={{ width: '60px', marginRight: '10px', borderRadius: '50%' }} />
         <div style={{ flex: '1' }}>
-          <Typography variant="h6" component="h2">{companyName}</Typography>
-          <Typography variant="body1" component="p">{jobRole} - {location}</Typography>
+          <Typography variant="body1" component="h2">{companyName}</Typography>
+          <Typography variant="h5" component="p">{jobRole}</Typography>
+          <Typography variant="body2" component="p">{location}</Typography> {/* Reduced whitespace */}
         </div>
       </CardContent>
-      <CardContent>
-        <Typography variant='body1' component="p">Estimated Salary: {minJdSalary} - {maxJdSalary} {salaryCurrencyCode} ✅</Typography>
+      <CardContent style={{ marginBottom: 0 }}>
+        <Typography variant='body2' component="p">Estimated Salary: {minJdSalary} - {maxJdSalary} {salaryCurrencyCode} ✅</Typography>
       </CardContent>
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
+
+      <CardContent style={{ marginBottom: 0 }}>
+        <Typography variant="body2" color="textSecondary" component="p" style={{ marginBottom: 0 }}>
+          <div><b>About Company:</b></div>
           {expanded ? fullDescription : initialDescription}
-          {!expanded && (
-            <Button size="small" onClick={handleOpenModal} style={{ marginLeft: 'auto', borderRadius: '50%' }}>
-              <ExpandMoreIcon />
-            </Button>
-          )}
         </Typography>
+        {!expanded && (
+          <div style={{ textAlign: 'center', marginTop: '8px', position: 'relative' }}>
+            <Button size="small" onClick={handleOpenModal} style={{ backgroundColor: 'transparent', color: 'blue', borderRadius: '0', textTransform: 'none', padding: 0, position: 'absolute', bottom: '-12px', left: '50%', transform: 'translateX(-50%)' }}>
+              View Job
+            </Button>
+          </div>
+        )}
       </CardContent>
-      <CardContent>
+
+
+      <CardContent style={{ paddingTop: 0 }}>
         <Typography variant="body2" component="p">Minimum Experience: {minExp} years</Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small" variant="contained" style={{ borderRadius: '12px', backgroundColor: 'rgb(85, 239, 196)', color: 'black', fontWeight: 'bold', width: '100%', padding: '12px' }}>⚡ Easy Apply</Button>
+      <CardActions style={{ paddingTop: 0 }}>
+        <Button size="small" variant="contained" style={{ borderRadius: '12px', backgroundColor: 'rgb(85, 239, 196)', color: 'black', fontWeight: 'bold', width: '100%', padding: '12px' }} href={jdLink} target="_blank" rel="noopener noreferrer">
+          ⚡ Easy Apply
+        </Button>
       </CardActions>
       <FullDescriptionModal open={modalOpen} handleClose={handleCloseModal} fullDescription={fullDescription} />
     </Card>
