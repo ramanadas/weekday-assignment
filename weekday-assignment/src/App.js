@@ -1,9 +1,13 @@
+import { Provider } from 'react-redux';
 import './App.css';
 import JobsList from './containers/JobsList';
+import store from './store';
 
 function App() {
   return (
-    <JobsList/>
+    <Provider store={store}>
+      <JobsList/>
+    </Provider>
   );
 }
 
